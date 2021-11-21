@@ -10,8 +10,6 @@
   height: 60px;
   top: 0;
 }
-
-
 .nav {
   background: #2c3e50;
   color: white;
@@ -60,7 +58,10 @@ span {
 .info{
     display: inline-flex;
 }
-
+ .map-container{
+  width: 950px;
+  height: 700px;
+} 
 
 .card-body {
   margin: 0;
@@ -72,13 +73,14 @@ span {
   place-items: center;
   overflow: hidden;
   font-family: poppins;
+  height: 600px;
 }
 
 .container {
   position: relative;
-  margin-left: 50px;
+  margin-left: 45px;
   width: 350px;
-  height: 500px;
+  height: 600px;
   border-radius: 20px;
   padding: 40px;
   box-sizing: border-box;
@@ -87,7 +89,6 @@ span {
 }
 .inputs {
   text-align: left;
-  margin-top: 30px;
 }
 
 label, input, button {
@@ -176,7 +177,7 @@ button:hover {
   .card__icon {
     position: relative;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.9);
+    color: white;
   }
   
   .card__link::after {

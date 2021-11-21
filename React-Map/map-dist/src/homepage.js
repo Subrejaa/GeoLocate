@@ -16,7 +16,7 @@ function Homepage(){
   <div class="main-container">
   <div class="cards">
     <div class="card card-1">
-      <h2 class="card__title">Geo Locate company calculates linear distance between uk and any point in the map based on the latitude and Longitute.
+      <h2 class="card__title">Geo Locate company calculates linear distance between any points in the map based on the latitude and Longitute.
            User can save the distances in database and can also view the previously calculated distance.</h2>
       <p class="card__apply">
         <Link class="card__link" to="/map">View map <i class="fas fa-arrow-right"></i></Link>
