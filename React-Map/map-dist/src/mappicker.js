@@ -14,22 +14,33 @@ export default function ResponsiveDialog() {
    const[defaultLocation2,setDefaultLocation2]=useState(DefaultLocation2);
    const[location2,setLocation2]=useState(defaultLocation2);
   const [zoom, setZoom] = useState(DefaultZoom);
+  const[location,setLocation]=useState(()=>{
+    const saved=localStorage.getItem("location");
+    const initialValue=JSON.parse(saved);
+    return initialValue || "";
+
+  })
   const[slong,setlng1]=useState();
   const[slat,setlat1]=useState();
-  const[location,setLocation]=useState((defaultLocation) =>{
-    const saved = localStorage.getItem("location");
-    const initialValue = JSON.parse(saved);
-    return initialValue || "";
-  })
+  // const[location,setLocation]=useState(() =>{
+  //   const saved = localStorage.getItem("location");
+  //   const initialValue = JSON.parse(saved);
+  //   return initialValue || "";
+  // })
   var[dist,setdist]=useState(() =>{
     const saved = localStorage.getItem("Distance");
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   })
-  useEffect(() => {
-    localStorage.setItem("Destlat", JSON.stringify(location.lat));})
-    useEffect(() => {
-      localStorage.setItem("Destlng", JSON.stringify(location.lng));})
+  useEffect(()=>{
+    localStorage.setItem("location",JSON.stringify(location));})
+    // useEffect(()=>{
+    //   localStorage.setItem("Destlng",JSON.stringify(location.lng));
+    // })
+  // useEffect(() => {
+  //   localStorage.setItem("Destlat", JSON.stringify(location.lat));})
+  //   useEffect(() => {
+  //     localStorage.setItem("Destlng", JSON.stringify(location.lng));})
   const Insert=()=>{
     setlat1("")
     setlng1("")
