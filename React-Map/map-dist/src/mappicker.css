@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+*{
+    font-family:'Poppins', sans-serif;
+}
+nav {
+	margin: 1px auto 0;
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background-color: #34495e;
+	border-radius: 8px;
+	font-size: 0;
+}
+nav a {
+	line-height: 50px;
+	height: 100%;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+ .contents{
+	text-align:right;
+	 padding-left:610px;
+     display: inline-flex;
+     font-weight: 300;
+} 
+#geo{
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.dots{
+    color:#2c3e50;
+}
+.home-card{
+    border: 1px solid;
+    box-shadow: 0 0.4rem 0.8rem 0 rgba(0,0,0,0.2),0 0.6rem 2rem 0 rgba(0,0,0,0.2);
+    color: #ecf0f3;
+    margin-top: 50px;
+}
+nav .animation {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+}
+a:nth-child(1) {
+	width: 100px;
+}
+a:nth-child(2) {
+	width: 110px;
+}
+a:nth-child(3) {
+	width: 100px;
+}
+a:nth-child(4) {
+	width: 160px;
+}
+a:nth-child(5) {
+	width: 120px;
+}
+a:nth-child(6) {
+	width: 120px;
+}
+a:nth-child(7) {
+	width: 120px;
+}
+
+
+.nav-body {
+	font-size: 12px;
+	font-family: sans-serif;
+	background: #2c3e50;
+}
+span {
+    color: #2BD6B4;
+}
+.info{
+    display: inline-flex;
+}
+
+
+.card-body {
+  margin: 0;
+  /* width: 100vw;
+  height: 100vh; */
+  background: #ecf0f3;
+  text-align: center;
+  justify-content: center;
+  place-items: center;
+  overflow: hidden;
+  font-family: poppins;
+}
+
+.container {
+  position: relative;
+  margin-left: 50px;
+  width: 350px;
+  height: 500px;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: #ecf0f3;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+}
+.inputs {
+  text-align: left;
+  margin-top: 30px;
+}
+
+label, input, button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+label {
+  margin-bottom: 4px;
+}
+
+label:nth-of-type(2) {
+  margin-top: 12px;
+}
+
+input::placeholder {
+  color: gray;
+}
+
+input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+button {
+  margin-top: 20px;
+  background: #2c3e50;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: 0.5s;
+}
+button:hover {
+  box-shadow: none;
+}
+.latlon{
+   margin-left: 50px;
+    margin-top: 50px;
+}
+.home-body{
+    background-image:url('./Asset/earthbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity:1;
+    height: 605px;
+    position: relative;
+    background-position: center;  
+}
+@media only screen and (max-width: 768px) {
+.nav-body,.contents {
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow:
+        0 10px 27px rgba(0, 0, 0, 0.05);
+}
+}
+.main-container {
+    padding: 30px;
+  }
+  
+  .card {
+    margin: 90px 20px 20px 300px;
+    padding: 20px;
+    width: 600px;
+    min-height: 200px;
+    display: grid;
+    grid-template-rows: 20px 50px 1fr 50px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s;
+  
+  }
+  
+  .card:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
+  }
+  
+  .card__link,
+  .card__exit,
+  .card__icon {
+    position: relative;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .card__link::after {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    content: "";
+    width: 0%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: all 0.5s;
+  }
+  
+  .card__link:hover::after {
+    width: 100%;
+  }
+  
+  /* .card__exit {
+    grid-row: 1/2;
+    justify-self: end;
+  }
+  
+  .card__icon {
+    grid-row: 2/3;
+    font-size: 30px;
+  }
+   */
+  .card__title {
+    grid-row: 3/4;
+    font-weight: 400;
+    color: #ffffff;
+  }
+  
+  .card__apply {
+    grid-row: 4/5;
+    align-self: center;
+  }
+  
+  /* CARD BACKGROUNDS */
+  
+  .card-1 {
+    /* background: radial-gradient(#1fe4f5, #3fbafe); */
+    background:transparent;
+ 
+  }
+  
+  
+  /* RESPONSIVE */
+  
+  @media (max-width: 1600px) {
+    .cards {
+      justify-content: center;
+    }
+  }
+  
