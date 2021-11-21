@@ -82,15 +82,15 @@ export default function ResponsiveDialog() {
   ];
   return (
     <>
-    <div class="nav-body">
-     <nav>
-     <Link to = "/" id="geo"> GEO LOCATE</Link> 
-	<a class="dots">.</a>
-	<a class="dots">.</a>
-  <a class="dots">.</a>
-  <div class="contents"><Link to = "/map" > MAP</Link>
-  <Link to = "/viewloc"> VIEW</Link></div>            
-</nav>
+    <div class="site">
+	<nav class="nav">
+		<div class="nav__title"><Link to="/">GEO LOCATE</Link></div>
+		<ul class="nav__list">
+			
+		<Link to="/map">	<li class="nav__item">MAP</li></Link>
+		<Link to="/viewloc">	<li class="nav__item">VIEW DISTANCES</li></Link>
+		</ul>
+	</nav>				
 </div>
 <div class="info">
       <MapPicker

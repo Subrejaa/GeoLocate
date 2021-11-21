@@ -2,41 +2,50 @@
 *{
     font-family:'Poppins', sans-serif;
 }
-nav {
-	margin: 1px auto 0;
-	position: relative;
-	width: 100%;
-	height: 50px;
-	background-color: #34495e;
-	border-radius: 8px;
-	font-size: 0;
+.nav {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  top: 0;
 }
-nav a {
-	line-height: 50px;
-	height: 100%;
-	font-size: 15px;
-	display: inline-block;
-	position: relative;
-	z-index: 1;
-	text-decoration: none;
-	text-transform: uppercase;
-	text-align: center;
-	color: white;
-	cursor: pointer;
+
+
+.nav {
+  background: #2c3e50;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
 }
- .contents{
-	text-align:right;
-	 padding-left:610px;
-     display: inline-flex;
-     font-weight: 300;
-} 
-#geo{
-    padding-left: 10px;
-    font-size: 16px;
-    font-weight: 500;
+nav  a{
+  text-decoration: none;
+  color: white;
 }
-.dots{
-    color:#2c3e50;
+nav ul li a{
+  text-decoration: none;
+  color: white;
+}
+
+.nav__title {
+  margin: 0px 30px;
+}
+.nav__item {
+  display: inline-block;
+  margin: 0px 30px;
+}
+
+.hero {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #BBDEFB;
+}
+.hero h1 {
+  font-size: 6em;
+  margin: 0 90px;
+  text-align: center;
 }
 .home-card{
     border: 1px solid;
@@ -44,42 +53,7 @@ nav a {
     color: #ecf0f3;
     margin-top: 50px;
 }
-nav .animation {
-	position: absolute;
-	height: 100%;
-	top: 0;
-	z-index: 0;
-	transition: all .5s ease 0s;
-	border-radius: 8px;
-}
-a:nth-child(1) {
-	width: 100px;
-}
-a:nth-child(2) {
-	width: 110px;
-}
-a:nth-child(3) {
-	width: 100px;
-}
-a:nth-child(4) {
-	width: 160px;
-}
-a:nth-child(5) {
-	width: 120px;
-}
-a:nth-child(6) {
-	width: 120px;
-}
-a:nth-child(7) {
-	width: 120px;
-}
 
-
-.nav-body {
-	font-size: 12px;
-	font-family: sans-serif;
-	background: #2c3e50;
-}
 span {
     color: #2BD6B4;
 }
@@ -174,21 +148,7 @@ button:hover {
     position: relative;
     background-position: center;  
 }
-@media only screen and (max-width: 768px) {
-.nav-body,.contents {
-    position: fixed;
-    left: -100%;
-    top: 5rem;
-    flex-direction: column;
-    background-color: #fff;
-    width: 100%;
-    border-radius: 10px;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow:
-        0 10px 27px rgba(0, 0, 0, 0.05);
-}
-}
+
 .main-container {
     padding: 30px;
   }

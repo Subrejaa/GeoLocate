@@ -12,16 +12,15 @@ function Viewloc (){
 	  setDistance(res.data)
   })}
     return(
-	<div class="loc-body">
-		 <div class="nav-body">
-     <nav>
-  <Link to = "/" id="geo"> GEO LOCATE</Link> 
-	<a class="dots">.</a>
-	<a class="dots">.</a>
-  <a class="dots">.</a>
-<div class="contents"><Link to = "/map">  MAP</Link>        
-  <Link to = "/viewloc"  > VIEW</Link>  </div>      
-  </nav>
+      <div>
+      <div class="site">
+      <nav class="nav">
+        <div class="nav__title"><Link to="/">GEO LOCATE</Link></div>
+        <ul class="nav__list">
+        <li class="nav__item"> <Link to="/map"> MAP</Link></li>
+        <li class="nav__item"> <Link to="/viewloc"> VIEW DISTANCES</Link></li>
+        </ul>
+      </nav>				
     </div>
 
 <div class="loc-container">
@@ -43,7 +42,7 @@ function Viewloc (){
   
   </ul>
 </div>
-	</div>
+</div>
 	             
     )
 }
