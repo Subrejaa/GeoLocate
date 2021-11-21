@@ -156,6 +156,7 @@ button {
   font-weight: 900;
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
+  color: white;
 }
 button:hover {
   box-shadow: none;
