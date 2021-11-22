@@ -27,15 +27,15 @@ function Viewloc (){
   <h2>DISTANCE BETWEEN THE LOCATIONS</h2>
   <ul class="responsive-table">
     <li class="table-header">
-      <div class="col col-2">FROM LATITUDE</div>
-      <div class="col col-2">TO LATITUDE</div>
+      <div class="col col-2">FROM LOCATION</div>
+      <div class="col col-2">TO LOCATION</div>
       <div class="col col-3">DISTANCE(in kms)</div>
     </li>
 	{distance.map((e=>{
 			return(
     <li class="table-row">
-      <div class="col col-2" data-label="Job Id">{e.sourcelat}</div>
-      <div class="col col-2" data-label="Customer Name">{e.dlat}</div>
+      <div class="col col-2" data-label="Job Id">{e.From}</div>
+      <div class="col col-2" data-label="Customer Name">{e.To}</div>
       <div class="col col-3" data-label="Amount">{e.distance}</div>
     </li>
 			)}))}

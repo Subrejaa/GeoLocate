@@ -78,13 +78,13 @@ span {
 
 .container {
   position: relative;
-  margin-left: 45px;
+  margin-left: 30px;
   width: 350px;
-  height: 600px;
+  height: 450px;
   border-radius: 20px;
   padding: 40px;
   box-sizing: border-box;
- 
+ margin-top:70px;
   background: #ecf0f3;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
@@ -156,7 +156,7 @@ button:hover {
   }
   
   .card {
-    margin: 90px 20px 20px 350px;
+    margin: 70px 20px 20px 350px;
     padding: 20px;
     width: 600px;
     min-height: 200px;

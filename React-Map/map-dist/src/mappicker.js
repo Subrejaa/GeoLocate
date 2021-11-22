@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import {
   GoogleMap,
   LoadScript,
-  Marker,
+  Marker
 } from "@react-google-maps/api";
 import {getPreciseDistance} from 'geolib';
 import axios from 'axios';
@@ -13,34 +13,32 @@ const center = {
   lng: -180,
 };
 function GeoLocate() {
+ 
   const [id, setId] = useState(0);
+const [from, setFrom] = useState("")
+  const [to, setTo] = useState("")
    const [markers, setMarkers] = useState([]);
   const [drawMarker, setDrawMarker] = useState(false);
+  var dist;
   const addMarker = (coords) => {
     setId((id) => id + 1);
     setMarkers((markers) => markers.concat([{ coords, id }]));
   };
-  var[dist,setdist]=useState(() =>{
-    const saved = localStorage.getItem("Distance");
-    const initialValue = JSON.parse(saved);
-    return initialValue || "";
-  })
   useEffect(() => {
     const data = localStorage.getItem("my coords");
     if (data) {
       setMarkers(JSON.parse(data));
     }
   }, []);
+  
 
   useEffect(() => {
     localStorage.setItem("my coords", JSON.stringify(markers));
   });
-  const Insert=()=>{
-    setMarkers("")
-    setdist("")
-  } 
+  
+     
   const Addistance =()=>{ axios.post("http://localhost:9090/locinsert",
-  {sourcelat:markers[0]['coords']['lat'],sourcelng:markers[0]['coords']['lng'],dlat:markers[1]['coords']['lat'],dlong:markers[1]['coords']['lng'],distance:dist} 
+  {sourcelat:markers[0]['coords']['lat'],sourcelng:markers[0]['coords']['lng'],dlat:markers[1]['coords']['lat'],dlong:markers[1]['coords']['lng'],distance:dist,From:from,To:to} 
  ).then((res)=>{console.log(res.data)
   })}
  function calculatePreciseDistance  ()  {
@@ -89,24 +87,18 @@ function GeoLocate() {
                   );
                 })
               : null}
+              
           </GoogleMap>
         </LoadScript>
       </div>
-     { console.log(markers)}
       <div class="card-body">
 <div class="container">
-{ markers.length !== 2 ? null : 
-     <div class="inputs">
-    <label>From Latitude</label>
-    <input type="text" value={markers[0]['coords']['lat']} disabled  />
-    <label>From Longitute</label>
-    <input type="text" value={markers[0]['coords']['lng']} disabled/>
-     <label>To Latitude</label>
-    <input type="text" value={markers[1]['coords']['lat']} disabled  />
-    <label>To Longitute</label>
-    <input type="text" value={markers[1]['coords']['lng']} disabled  />
+<div class="inputs">
+    <label>From </label>
+    <input type="text" value={from} onChange={(e) => setFrom(e.target.value) }  />
+     <label>To</label>
+    <input type="text" value={to}  onChange={(e) => setTo(e.target.value) } /> 
     </div> 
-}
       <button
         type="button"
         style={{ backgroundColor: drawMarker ? "black" : null }}
