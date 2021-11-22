@@ -3,38 +3,38 @@ import {
   GoogleMap,
   LoadScript,
   Marker,
-  Polyline
 } from "@react-google-maps/api";
 import {getPreciseDistance} from 'geolib';
 import axios from 'axios';
-import {useNavigate,Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './mappicker.css'
 const center = {
   lat: 0,
   lng: -180,
 };
 function GeoLocate() {
-  const [id, setId] = React.useState(0);
-   const [markers, setMarkers] = React.useState([]);
-  const [drawMarker, setDrawMarker] = React.useState(false);
+  const [id, setId] = useState(0);
+   const [markers, setMarkers] = useState([]);
+  const [drawMarker, setDrawMarker] = useState(false);
   const addMarker = (coords) => {
     setId((id) => id + 1);
     setMarkers((markers) => markers.concat([{ coords, id }]));
   };
-const navigate=useNavigate();
-  // var[markers,setMarkers]=useState(()=>{
-  //   const saved = localStorage.getItem("location");
-  //   const initialValue = JSON.parse(saved);
-  //   return [] || "";
-  // })
   var[dist,setdist]=useState(() =>{
     const saved = localStorage.getItem("Distance");
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   })
-  useEffect(()=>{
-    localStorage.setItem("location",JSON.stringify(markers));
-  })
+  useEffect(() => {
+    const data = localStorage.getItem("my coords");
+    if (data) {
+      setMarkers(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("my coords", JSON.stringify(markers));
+  });
   const Insert=()=>{
     setMarkers("")
     setdist("")
@@ -75,7 +75,7 @@ const navigate=useNavigate();
             }}
             zoom={2}
             center={center}
-            onClick={(e) => (drawMarker ? addMarker(e.latLng.toJSON()) : null)}
+            onClick={(e) => ((drawMarker && markers.length <2) ? addMarker(e.latLng.toJSON()) : null)}
           >
             {markers
               ? markers.map((marker) => {
@@ -92,18 +92,21 @@ const navigate=useNavigate();
           </GoogleMap>
         </LoadScript>
       </div>
+     { console.log(markers)}
       <div class="card-body">
 <div class="container">
-    {/* <div class="inputs">
+{ markers.length !== 2 ? null : 
+     <div class="inputs">
     <label>From Latitude</label>
-    <input type="text" value={id} disabled  />
+    <input type="text" value={markers[0]['coords']['lat']} disabled  />
     <label>From Longitute</label>
-    <input type="text" value={id} disabled/>
+    <input type="text" value={markers[0]['coords']['lng']} disabled/>
      <label>To Latitude</label>
-    <input type="text" value={markers} disabled  />
+    <input type="text" value={markers[1]['coords']['lat']} disabled  />
     <label>To Longitute</label>
-    <input type="text" value={markers} disabled  />
-    </div> */}
+    <input type="text" value={markers[1]['coords']['lng']} disabled  />
+    </div> 
+}
       <button
         type="button"
         style={{ backgroundColor: drawMarker ? "black" : null }}
@@ -112,7 +115,7 @@ const navigate=useNavigate();
         }}
       >ADD MARKER
       </button>
-      <button type="button" onClick={() => setMarkers([])}>CLEAR MAP
+      <button type="button" onClick={() => setMarkers([])}>CLEAR MARKER
       </button>
       <button type="button" onClick={calculatePreciseDistance}>DISTANCE</button>
    </div>
