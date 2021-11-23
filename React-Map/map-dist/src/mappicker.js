@@ -15,11 +15,18 @@ const center = {
 function GeoLocate() {
  
   const [id, setId] = useState(0);
-const [from, setFrom] = useState("")
-  const [to, setTo] = useState("")
-   const [markers, setMarkers] = useState([]);
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [markers, setMarkers] = useState([]);
   const [drawMarker, setDrawMarker] = useState(false);
-  var dist;
+  var [dist, setDistance] = useState("");
+  const [errorfrom, setErrorfrom] = useState("");
+  const [errorto, setErrorto] = useState("");
+  const Ereset=()=>{
+    setFrom("")
+    setTo("")
+  }
+
   const addMarker = (coords) => {
     setId((id) => id + 1);
     setMarkers((markers) => markers.concat([{ coords, id }]));
@@ -49,8 +56,34 @@ const [from, setFrom] = useState("")
     alert(
       `Distance\n${dist / 1000} KM`
     );
+    setDistance(dist);
     return Addistance();
   };
+  const validate = (e) => {
+    console.log("error msg")
+    e.preventDefault()
+    if(from===""||to==="")
+    {
+      console.log("err msg 1")
+     if(from === ""){
+      console.log("err msg from")
+       setErrorfrom("*ENTER FROM PLACE")
+       console.log("err msg after frm")
+     }
+     else{
+       setErrorfrom("")
+     }
+     if (to === "") {
+         setErrorto("*ENTER TO PLACE")
+     }
+     else {
+         setErrorto("")
+     }
+    }
+    else{
+     calculatePreciseDistance()
+    }
+  }
   return (
     <>
     <div class="site">
@@ -68,7 +101,7 @@ const [from, setFrom] = useState("")
           <GoogleMap
             id="direction-example"
             mapContainerStyle={{
-              height: "600px",
+              height: "750px",
               width: "100%",
             }}
             zoom={2}
@@ -93,12 +126,26 @@ const [from, setFrom] = useState("")
       </div>
       <div class="card-body">
 <div class="container">
+{markers.length!==2 ? null :
 <div class="inputs">
-    <label>From </label>
-    <input type="text" value={from} onChange={(e) => setFrom(e.target.value) }  />
-     <label>To</label>
-    <input type="text" value={to}  onChange={(e) => setTo(e.target.value) } /> 
+<label>From Latitude </label>
+    <input type="text" value={markers[0]['coords']['lat']} disabled  />
+    <label>From Longititude </label>
+    <input type="text" value={markers[0]['coords']['lng']} disabled />
+    <label>To Latitude </label>
+    <input type="text" value={markers[1]['coords']['lat']} disabled  />
+     <label>To Longitude</label>
+    <input type="text" value={markers[1]['coords']['lng']}  disabled /> 
+    <label>From  </label>
+    <input type="text" id="from" value={from} style={{borderColor:errorfrom=== "" ?"#004680":'red'}} onChange={(e)=>{setFrom(e.target.value)
+       setErrorfrom("")}}/>
+     <label>To </label>
+    <input type="text" id="to" value={to} style={{borderColor:errorto=== "" ?"#004680":'red'}} onChange={(e)=>{setTo(e.target.value)
+                            setErrorto("")}}  /> 
+    <label>Distance</label>
+    <input type="text" value={dist}/>
     </div> 
+  }
       <button
         type="button"
         style={{ backgroundColor: drawMarker ? "black" : null }}
@@ -109,7 +156,7 @@ const [from, setFrom] = useState("")
       </button>
       <button type="button" onClick={() => setMarkers([])}>CLEAR MARKER
       </button>
-      <button type="button" onClick={calculatePreciseDistance}>DISTANCE</button>
+      <button type="button" onClick={(e)=>validate(e)}>DISTANCE</button>
    </div>
    </div>
  </div>   

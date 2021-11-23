@@ -1,7 +1,8 @@
 import './viewloc.css'
 import React,{useState,useEffect} from 'react'
-import {Link} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 import axios from 'axios';
+
 function Viewloc (){
 	const[distance,setDistance]=useState([])
 	useEffect( ()=>{
@@ -11,6 +12,7 @@ function Viewloc (){
    return await axios.get("http://localhost:9090/viewloc").then((res)=>{
 	  setDistance(res.data)
   })}
+  const navigate=useNavigate();
     return(
       <div>
       <div class="site">
@@ -30,6 +32,7 @@ function Viewloc (){
       <div class="col col-2">FROM LOCATION</div>
       <div class="col col-2">TO LOCATION</div>
       <div class="col col-3">DISTANCE(in kms)</div>
+      <div class="col col-3"></div>
     </li>
 	{distance.map((e=>{
 			return(
@@ -37,6 +40,7 @@ function Viewloc (){
       <div class="col col-2" data-label="Job Id">{e.From}</div>
       <div class="col col-2" data-label="Customer Name">{e.To}</div>
       <div class="col col-3" data-label="Amount">{e.distance}</div>
+      <button id="button" onClick={() => {navigate('/viewdetmap', { state: e, replace:true })}}>DETAILS</button>
     </li>
 			)}))}
   

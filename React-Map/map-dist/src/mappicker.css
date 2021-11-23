@@ -73,23 +73,24 @@ span {
   place-items: center;
   overflow: hidden;
   font-family: poppins;
-  height: 600px;
+  height: 780px;
 }
 
 .container {
   position: relative;
   margin-left: 30px;
   width: 350px;
-  height: 450px;
+  height: 780px;
   border-radius: 20px;
   padding: 40px;
+  padding-top: 10px;
   box-sizing: border-box;
- margin-top:70px;
   background: #ecf0f3;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 .inputs {
   text-align: left;
+ 
 }
 
 label, input, button {
@@ -100,7 +101,9 @@ label, input, button {
   outline: none;
   box-sizing: border-box;
 }
-
+#from,#to{
+  border: 0.1px solid;
+}
 label {
   margin-bottom: 4px;
 }
@@ -124,6 +127,7 @@ input {
 }
 
 button {
+ 
   margin-top: 20px;
   background: #2c3e50;
   height: 40px;
@@ -133,6 +137,7 @@ button {
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
   color: white;
+ 
 }
 button:hover {
   box-shadow: none;
