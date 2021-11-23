@@ -25,4 +25,19 @@ app.post("/locinsert",function(req,res){
             })
         })
     })
+    app.put('/viewdetmap',(req,res)=>{
+        MongoClient.connect(url,(err,conn)=>{
+            var dbo=conn.db('GeolocateMap')
+            dbo.collection('Distance').updateOne({_id:ObjectId(req.body._id)},
+            {$set:{sourcelat: req.body.sourcelat,
+                sourcelng: req.body.sourcelng,
+                dlat: req.body.dlat,
+                dlng: req.body.dlng,
+            distance:req.body.distance,
+        From:req.body.From,
+    To:req.body.To}},(err,data)=>{
+                res.send(data)
+            })
+        })
+    })
     app.listen(9090,()=>{console.log("Port is 9090")})
